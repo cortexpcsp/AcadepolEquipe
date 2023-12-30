@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiar Texto</title>
+    <style>
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <p id="texto-a-copiar">Texto que você deseja copiar.</p>
+        <button onclick="copiarTexto()">Copiar Texto</button>
+    </div>
+
+    <script>
+        function copiarTexto() {
+            var texto = document.getElementById("texto-a-copiar");
+            
+            // Cria um campo de texto temporário
+            var inputTemporario = document.createElement("input");
+            inputTemporario.setAttribute("value", texto.innerText);
+            document.body.appendChild(inputTemporario);
+            
+            // Seleciona e copia o texto no campo de texto temporário
+            inputTemporario.select();
+            document.execCommand("copy");
+            
+            // Remove o campo de texto temporário
+            document.body.removeChild(inputTemporario);
+            
+            alert("Texto copiado!");
+        }
+    </script>
+
+</body>
+</html>
